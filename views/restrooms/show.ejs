@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
     <h1><%= restroom.name %></h1>
     <h2>at <%= restroom.location %></h2>
-
+ <img src="<%= restroom.imageURL %>" alt="">
 
     <footer>
         <p><a href="/restrooms/<%= restroom._id %>/edit">Edit This Restroom</a></p>

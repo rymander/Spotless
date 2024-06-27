@@ -7,6 +7,7 @@ const BusinessSchema = new Schema({
     isGenderNuetral: Boolean,
     cleanlinessRating: Number,
     location: String,
+    imageURL: String,
 
 });
 

@@ -1,9 +1,7 @@
 
     <% layout('layouts/boilerplate') %>
     <h1>All Restrooms</h1>
-    <div>
-        <a href="/restrooms/new">Add new Restroom</a>
-    </div>
+    
     <ul>
         <% for (let restroom of restrooms) {%>
         <li><a href="restrooms/<%= restroom.id %>"><%= restroom.name %> at <%= restroom.location %></a></li>
