@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+    <h1><%= restroom.name %></h1>
+    <h2>at <%= restroom.location %></h2>
+
+
+    <footer>
+        <p><a href="/restrooms/<%= restroom._id %>/edit">Edit This Restroom</a></p>
+        
+        <a href="/restrooms">All Restrooms</a>
+
+        <p><form action="/restrooms/<%= restroom._id %>?_method=DELETE" method="POST">
+            <button type="button" class="btn btn-danger">DELETE!</button>
+        </form></p>
+    </footer>

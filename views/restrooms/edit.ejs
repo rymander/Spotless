@@ -1,0 +1,15 @@
+
+<% layout('layouts/boilerplate') %>
+  <form action="/restrooms/<%= restroom._id %>/?_method=PUT" method="POST">
+        <div>
+            <label for="bName">Business Name</label>
+            <input type="text" name="restroom[name]" id="title" value="<%= restroom.name %>">
+            <label for="location">Location</label>
+            <input type="text" name="restroom[location]" id="location" value="<%= restroom.location %>">
+        </div>
+        <button>Update Restroom</button>
+    </form>
+
+    <footer>
+        <a href="/restrooms/<%= restroom._id %>">Back to this Restroom</a>
+    </footer>
