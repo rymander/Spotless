@@ -5,7 +5,8 @@
 
     <footer>
         <p><a href="/restrooms/<%= restroom._id %>/edit">Edit This Restroom</a></p>
-        
+
+        <p><%= restroom.description %></p>
         <a href="/restrooms">All Restrooms</a>
 
         <p><form action="/restrooms/<%= restroom._id %>?_method=DELETE" method="POST">

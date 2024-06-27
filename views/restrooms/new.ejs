@@ -1,14 +1,14 @@
 <% layout('layouts/boilerplate') %>
     <form action="/restrooms" method="POST">
-        <div>
+        <div class="d-flex flex-column col-auto" >
             <label for="bName">Business Name</label>
             <input type="text" name="restroom[name]" id="title">
             <label for="location">Location</label>
             <input type="text" name="restroom[location]" id="location">
         </div>
-        <button>Add Restroom</button>
+        <button class="d-flex mt-4">Add Restroom</button>
     </form>
 
     <footer>
-        <a href="/restrooms">All Restrooms</a>
+        
     </footer>
