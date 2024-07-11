@@ -1,4 +1,23 @@
 <% layout('layouts/boilerplate') %>
+
+<div class="card" style="width: 18rem;">
+    <img src="<%= restroom.imageURL %>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= restroom.name %></h5>
+      <p class="card-text text-muted"><%= restroom.location %></p>
+      <p class="card-text text-muted">Rating: <%= restroom.cleanlinessRating %></p>
+      <p class="card-text"><%= restroom.description %></p>
+      <p><a href="/restrooms/<%= restroom._id %>/edit">Edit This Restroom</a></p>
+      <a href="/restrooms" class="btn btn-primary">All Restrooms</a>
+    
+      <p><form action="/restrooms/<%= restroom._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">DELETE!</button>
+    </form></p>
+    </div>
+    
+    
+  </div>
+<!-- 
     <h1><%= restroom.name %></h1>
     <h2>at <%= restroom.location %></h2>
  <img src="<%= restroom.imageURL %>" alt="">
@@ -12,4 +31,4 @@
         <p><form action="/restrooms/<%= restroom._id %>?_method=DELETE" method="POST">
             <button type="button" class="btn btn-danger">DELETE!</button>
         </form></p>
-    </footer>
+    </footer> -->
