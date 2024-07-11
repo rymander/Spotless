@@ -27,21 +27,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 
-
-app.get('/home', (req, res) =>{
-    res.render('home')
-})
-app.get('/restrooms', catchAsync(async (req, res, next) =>{
-    const restrooms = await Business.find({});
-    res.render('restrooms/index', { restrooms })
-}))
-
-app.get('/restrooms/new', (req, res)=>{
-    res.render('restrooms/new')
-})
-
-app.post('/restrooms', catchAsync( async(req, res, next)=> { //logic to create a new bathroom
-    // if(!req.body.restroom) throw new ExpressError('Invalid data submitted')
+const validateRestroom = (req, res, next)=>{
     const restroomSchema = Joi.object({
         restroom: Joi.object({
             name: Joi.string().required(),
@@ -57,8 +43,27 @@ app.post('/restrooms', catchAsync( async(req, res, next)=> { //logic to create a
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
     }
-    console.log(result)
-    const restroom = new Business(req.body.restroom);
+    else{
+        next()
+    }
+}
+
+
+app.get('/home', (req, res) =>{
+    res.render('home')
+})
+app.get('/restrooms', catchAsync(async (req, res, next) =>{
+    const restrooms = await Business.find({});
+    res.render('restrooms/index', { restrooms })
+}))
+
+app.get('/restrooms/new', (req, res)=>{
+    res.render('restrooms/new')
+})
+
+app.post('/restrooms', validateRestroom, catchAsync( async(req, res, next)=> { //logic to create a new bathroom
+    
+     const restroom = new Business(req.body.restroom);
     await restroom.save();
     res.redirect(`/restrooms/${restroom._id}`)
 }))
