@@ -1,23 +1,104 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="card" style="width: 18rem;">
+<div class="row">
+  <div class="col-6">
     <img src="<%= restroom.imageURL %>" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%= restroom.name %></h5>
       <p class="card-text text-muted"><%= restroom.location %></p>
       <p class="card-text text-muted">Rating: <%= restroom.cleanlinessRating %></p>
+      <% 
+        const totalRating = restroom.reviews.reduce((sum, review) => sum + review.rating, 0);
+        const averageRating = restroom.reviews.length ? (totalRating / restroom.reviews.length).toFixed(1) : 0;
+      %>
+      <span>Average Rating: <%= averageRating %></span>
+      <div>
+        <% for(let i = 0; i < Math.round(averageRating); i++) { %>
+        ⭐
+        <% } %>
+      </div>
       <p class="card-text"><%= restroom.description %></p>
       <p><a href="/restrooms/<%= restroom._id %>/edit">Edit This Restroom</a></p>
       <a href="/restrooms" class="btn btn-primary">All Restrooms</a>
-    
-      <p><form action="/restrooms/<%= restroom._id %>?_method=DELETE" method="POST">
+
+      <p>
+      <form action="/restrooms/<%= restroom._id %>?_method=DELETE" method="POST">
         <button class="btn btn-danger">DELETE!</button>
-    </form></p>
+      </form>
+      </p>
     </div>
-    
-    
+
+
   </div>
-<!-- 
+  <div class="col-6">
+    <div class="card" style="width: 18rem;">
+      <h2>Leave a Review</h2>
+      <div>
+        <form action="/restrooms/<%=restroom._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <div class="mb-3"></div>
+            <label for="rating" class="form-label">Rating</label>
+            <div class="star-rating">
+              <p>
+                <input type="radio" id="star1" name="review[rating]" value="1" checked="true" required>
+                <label for="star1" class="star" style="color: yellow;">⭐</label>
+              </p>
+              <p>
+                <input type="radio" id="star2" name="review[rating]" value="2">
+                <label for="star2" class="star" style="color: yellow;">⭐⭐</label>
+              </p>
+              <p>
+                <input type="radio" id="star3" name="review[rating]" value="3">
+                <label for="star3" class="star" style="color: yellow;">⭐⭐⭐</label>
+              </p>
+              <p>
+                <input type="radio" id="star4" name="review[rating]" value="4">
+                <label for="star4" class="star" style="color: yellow;">⭐⭐⭐⭐</label>
+              </p>
+            </div>
+          </div>
+          <label class="form-label mb-3" for="body">Review</label>
+          <textarea class="form-control" name="review[body]" id="body" cols="6" rows="3" required></textarea>
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+          <div class="invalid-feedback">
+            Please provide a review.
+          </div>
+          <button class="btn btn-success mt-3">Submit</button>
+        </form>
+      </div>
+
+      <% for(let review of restroom.reviews) { %>
+      <div class="mb-3 card">
+
+
+
+        <div class="card-body">
+          <p>
+          <h5 class="card-title"> Rating: <%= review.rating %></h5>
+          <% for(let i = 0; i < review.rating; i++) { %>
+          ⭐
+          <% } %>
+          </p>
+          <p> Review: <%= review.body %> </p>
+          <form action="/restrooms/<%= restroom._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete Review</button>
+          </form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <!-- 
     <h1><%= restroom.name %></h1>
     <h2>at <%= restroom.location %></h2>
  <img src="<%= restroom.imageURL %>" alt="">

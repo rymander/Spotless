@@ -1,55 +1,57 @@
 <% layout('layouts/boilerplate') %>
-    <form action="/restrooms" method="POST" novalidate class="validated-form">
+<form action="/restrooms" method="POST" novalidate class="validated-form">
 
-        <div class="row">
-            <h1 class="text-center">New Business</h1>
-            <div class="col-6 offset-3">
-                <div>
-      <div class="valid-feedback">
-                Looks Good!
-            </div>          <label class="form-label" for="bName">Business Name</label>
-            <input class="form-control" type="text" name="restroom[name]" id="title" required>
-                    <div class="valid-feedback">
-                        Looks Good!
-                    </div>
-                </div>
-                <div>
-            <label class="form-label" for="location">Location</label>
-            <input class="form-control" type="text" name="restroom[location]" id="location" required>
-            <div class="valid-feedback">
-                Looks Good!
-            </div>
-            <label class="form-label" for="rating">Rating</label>
-                <input class="form-control" type="text" name="restroom[cleanlinessRating]" id="rating" value="1" required min="1" max="4">
+    <div class="row">
+        <h1 class="text-center">New Business</h1>
+        <div class="col-6 offset-3">
+            <div>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div> <label class="form-label" for="bName">Business Name</label>
+                <input class="form-control" type="text" name="restroom[name]" id="title" required>
                 <div class="valid-feedback">
                     Looks Good!
                 </div>
-            
-        </div>
-                <div>
-            <label class="form-label" for="image">Image URL</label>
-            <input class="form-control" type="text" name="restroom[imageURL]" id="imageURL" required>
-            <div class="valid-feedback">
-                Looks Good!
-            </div>        
-        </div>
-                <div>
-            <label class="form-label" for="description">Description</label>
-            <textarea class="form-control" type="text-area" name="restroom[description]" id="description" required></textarea>
-            <div class="valid-feedback">
-                Looks Good!
             </div>
-        </div>
-        
-        <button class="btn d-flex mt-4 btn-success">Add Restroom</button>
+            <div>
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" name="restroom[location]" id="location" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <label class="form-label" for="rating">Rating</label>
+                <input class="form-control" type="text" name="restroom[cleanlinessRating]" id="rating" value="1"
+                    required min="1" max="4">
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+
             </div>
+            <div>
+                <label class="form-label" for="image">Image URL</label>
+                <input class="form-control" type="text" name="restroom[imageURL]" id="imageURL" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+            </div>
+            <div>
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text-area" name="restroom[description]" id="description"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+            </div>
+
+            <button class="btn d-flex mt-4 btn-success">Add Restroom</button>
         </div>
+    </div>
 
-        
-            
-    </form>
 
-    <footer>
 
-        
-    </footer>
+</form>
+
+<footer>
+
+
+</footer>
